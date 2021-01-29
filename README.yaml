@@ -1,0 +1,65 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: terraform-aws-iam-cross-account-dest
+
+# License of this project
+license: "BSD-3"
+
+# Canonical GitLab repo
+gitlab_repo: guardianproject-ops/terraform-aws-iam-cross-account-dest
+
+# Badges to display
+badges: []
+
+# Short description of this project
+description: |-
+
+  This is a terraform module that creates a role that can be assumed by other accounts.
+
+introduction: |-
+
+  This module creates a role named by the `iam_role_name` variable. This role
+  can be assumed by accounts defined in the `source_accounts` variable.
+
+# How to use this project
+usage: |-
+
+  ```hcl
+  module "vpc" {
+    source = "git::https://gitlab.com/guardianproject-ops/terraform-aws-iam-cross-account-dest?ref=master"
+
+    iam_role_name   = "infra"
+    source_accounts = {
+      "account-alias" : {
+        id: 12345678
+        }
+    }
+    context         = module.this.context
+  }
+
+  ```
+
+related: []
+
+include:
+  - "docs/terraform.md"
+
+funded_by_cdr: false
+copyrights:
+  - name: "The Guardian Project"
+    url: "https://guardianproject.info"
+    year: "2021"
+  - name: " TrussWorks, Inc."
+    url: "https://github.com/trussworks/terraform-aws-iam-cross-acct-dest"
+    year: "2018"
+
+# Contributors to this project
+contributors:
+  - name: "Abel Luck"
+    gitlab: "abelxluck"
+    gravatar: 0f605397e0ead93a68e1be26dc26481a
